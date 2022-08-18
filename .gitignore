@@ -4,5 +4,6 @@ node_modules
 .history
 _build
 .idea
+.logs
 yarn.lock
 package-lock.json

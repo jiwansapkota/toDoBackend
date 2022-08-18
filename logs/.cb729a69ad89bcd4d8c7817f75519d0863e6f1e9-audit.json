@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 5
+    },
+    "auditLog": "logs/.cb729a69ad89bcd4d8c7817f75519d0863e6f1e9-audit.json",
+    "files": [
+        {
+            "date": 1660849292784,
+            "name": "logs/todo-backend-2022-08-19.log",
+            "hash": "37c2ce6e9246e353342b1cab648ec1c078347b36d61ccc813b980d41352ca60a"
+        }
+    ],
+    "hashType": "sha256"
+}

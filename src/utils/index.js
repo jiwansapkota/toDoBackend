@@ -48,6 +48,12 @@ module.exports = {
         email: Joi.string().email({ tlds: { allow: ['com', 'net', 'np'] } }).required(),
         password: Joi.string().required(),
     }),
+    taskValidation: () => Joi.object({
+        email: Joi.string().email({ tlds: { allow: ['com', 'net', 'np'] } }).required(),
+        taskName: Joi.string().required(),
+        isDone: Joi.boolean().required(),
+        subTasks: Joi.array(),
+    }),
     responseFormat: (code, req, data, error, res) => {
         if (error !== null) {
             if (code === 401) {

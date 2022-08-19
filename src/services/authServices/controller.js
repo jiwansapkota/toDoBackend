@@ -11,13 +11,13 @@ module.exports = {
                 email,
             });
             if (doesExists) {
-                return [{ success: false, msg: 'user already exists for this email' }, null];
+                return [{ success: false, message: 'user already exists for this email' }, null];
             }
             const newUser = User({ email, username, password });
             const success = await newUser.save();
             const data = success
-                ? { success: true, msg: 'user successfully created' }
-                : { success: false, msg: 'failed to create user' };
+                ? { success: true, message: 'user successfully created' }
+                : { success: false, message: 'failed to create user' };
             return [data, null];
         } catch (err) {
             console.log('error', err);
@@ -31,23 +31,21 @@ module.exports = {
                 email,
             });
             if (!user) {
-                return [{ success: false, msg: 'Authentication failed, User not found' }, null];
+                return [{ success: false, message: 'Authentication failed, User not found' }, null];
             }
             if (await bcrypt.compare(password, user.password)) {
-                const newUser = user;
-                delete newUser.password;
-                console.log(newUser);
-                const token = jwt.sign({ newUser }, secretKey,
-                    { expiresIn: 600 });
+                const tempUser = { email: user.email, username: user.username };
+                const token = jwt.sign({ ...tempUser }, secretKey,
+                    { expiresIn: 6000 });
                 return [{
                     success: true,
                     token,
-                    msg: 'User successfully logged in',
+                    message: 'User successfully logged in',
                 }, null];
             }
             return [{
                 success: false,
-                msg: 'Login Failed, Wrong Password',
+                message: 'Login Failed, Wrong Password',
             }, null];
         } catch (err) {
             console.log('error', err);

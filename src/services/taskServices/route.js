@@ -32,10 +32,10 @@ router.post('/create', async (req, res) => {
     const [data, err] = await create(temp);
     if (data) {
         const [d, e] = await getAllTasksForUser(email);
-        if (d) {
-            return responseFormat(200, req, { ...data, data: d }, null, res);
+        if (e) {
+            return responseFormat(200, req, null, e, res);
         }
-        return responseFormat(200, req, data, null, res);
+        return responseFormat(200, req, { ...data, data: d }, null, res);
     }
     return responseFormat(500, req, null, err, res);
 });
@@ -46,10 +46,10 @@ router.post('/update', async (req, res) => {
     const [data, err] = await update(temp);
     if (data) {
         const [d, e] = await getAllTasksForUser(email);
-        if (d) {
-            return responseFormat(200, req, { ...data, data: d }, null, res);
+        if (e) {
+            return responseFormat(200, req, null, e, res);
         }
-        return responseFormat(200, req, data, null, res);
+        return responseFormat(200, req, { ...data, data: d }, null, res);
     }
     return responseFormat(500, req, null, err, res);
 });
@@ -60,10 +60,10 @@ router.delete('/delete', async (req, res) => {
     const [data, err] = await del(id, email);
     if (data) {
         const [d, e] = await getAllTasksForUser(email);
-        if (d) {
-            return responseFormat(200, req, { ...data, data: d }, null, res);
+        if (e) {
+            return responseFormat(200, req, null, e, res);
         }
-        return responseFormat(200, req, data, null, res);
+        return responseFormat(200, req, { ...data, data: d }, null, res);
     }
     return responseFormat(500, req, null, err, res);
 });

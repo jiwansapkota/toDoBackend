@@ -31,7 +31,6 @@ module.exports = {
             const doc = await Task.findOne({ _id: task._id });
             doc.overwrite({ ...task });
             const success = await doc.save();
-            console.log('success', success);
             const data = success
                 ? { success: true, message: 'task successfully created' }
                 : { success: false, message: 'failed to create the task' };

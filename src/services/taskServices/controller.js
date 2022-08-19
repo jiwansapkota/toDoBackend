@@ -32,8 +32,8 @@ module.exports = {
             doc.overwrite({ ...task });
             const success = await doc.save();
             const data = success
-                ? { success: true, message: 'task successfully created' }
-                : { success: false, message: 'failed to create the task' };
+                ? { success: true, message: 'task successfully updated' }
+                : { success: false, message: 'failed to update the task' };
             return [data, null];
         } catch (err) {
             console.log(err);

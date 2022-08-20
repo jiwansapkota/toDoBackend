@@ -56,10 +56,11 @@ module.exports = {
     }),
     responseFormat: (code, req, data, error, res) => {
         if (error !== null) {
-            if (code === 401) {
-                return res.status(401)
+            if (code === 201) {
+                return res.status(201)
                     .send({
-                        msg: error,
+                        success: false,
+                        message: error,
                     });
             }
             // log error for debugging

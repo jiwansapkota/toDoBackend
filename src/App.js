@@ -34,7 +34,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 connectDB();
-app.use('/todo', routes)
+app.use('/todo', routes);
 app.get('/check', (req, res) => {
     res.send({
         message: 'OK',

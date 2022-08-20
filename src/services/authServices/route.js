@@ -16,7 +16,7 @@ router.post('/login', async (req, res) => {
     const { error } = loginValidation().validate({ ...body });
     if (error) {
         const { details } = error;
-        return responseFormat(401, req, null, details[0].message, res);
+        return responseFormat(201, req, null, details[0].message, res);
     }
     const [data, err] = await login(body);
     if (data) {
@@ -30,7 +30,7 @@ router.post('/signup', async (req, res) => {
     const { error } = signUpValidation().validate({ ...body });
     if (error) {
         const { details } = error;
-        return responseFormat(401, req, null, details[0].message, res);
+        return responseFormat(201, req, null, details[0].message, res);
     }
     const [data, err] = await signup(body);
     if (data) {
